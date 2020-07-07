@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
 function App() {
+  const [ theme, setTheme] = useState(Color.dark)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={theme}>
+        <h1>Theme Toggler</h1>
+        <p>This application is built for mainly toggling theme either in dark mode of ligth mode</p>
+        <button onClick={() => 
+          setTheme(theme.color === "#000" ? Color.dark : Color.light )}
+          >Toggle Theme
+        </button>
     </div>
   );
+}
+
+const style = {
+  textAlign: "center",
+  height: "94vh",
+  padding: "50px"
+}
+
+const Color = {
+  dark: {
+    backgroundColor: "#000",
+    color: "#fff",
+    ...style
+  },
+  light: {
+    backgroundColor: "#fff",
+    color: "#000",
+    ...style
+  }
 }
 
 export default App;
